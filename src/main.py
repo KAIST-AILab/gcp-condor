@@ -1,10 +1,31 @@
-import numpy as np
 import argparse
+
 import gym
+from stable_baselines import PPO2
+from stable_baselines import SAC
+from stable_baselines import TRPO
+from stable_baselines.common.vec_env import DummyVecEnv
 
 
 def run(env_name, algorithm, seed):
-    env = gym.make(env_name)
+    env_name_map = {
+        'halfcheetah': 'HalfCheetah-v2',
+        'hopper': 'Hopper-v2',
+        'ant': 'Ant-v2',
+        'walker': 'Walker-v2'
+    }
+    env = DummyVecEnv([lambda: gym.make(env_name_map[env_name])])
+
+    if algorithm == 'ppo':
+        model = PPO2('MlpPolicy', env, learning_rate=1e-3, verbose=1)
+    elif algorithm == 'trpo':
+        model = TRPO('MlpPolicy', env, max_kl=0.01, verbose=1)
+    elif algorithm == 'sac':
+        model = SAC('MlpPolicy', env, learning_rate=1e-3, verbose=1)
+    else:
+        raise NotImplementedError()
+
+    model.learn(total_timesteps=100000, seed=seed)
 
 
 if __name__ == "__main__":
