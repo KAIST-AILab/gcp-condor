@@ -2,5 +2,5 @@
 
 Modify the following files
 
-* config.yaml
-* deploymentmanager/condor-cluster.yaml
+* gcp-scripts/config.yaml
+* gcp-scripts/deploymentmanager/condor-cluster.yaml

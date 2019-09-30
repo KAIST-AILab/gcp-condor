@@ -1,0 +1,13 @@
+imports:
+- path: condor.jinja
+
+resources:
+- name: condor-cluster
+  type: condor.jinja
+  properties:
+    count: 0
+    pvmcount: 2
+    region: us-central1
+    zone: us-central1-b
+    email: someone@somewhere.com
+    instancetype: c2-standard-4

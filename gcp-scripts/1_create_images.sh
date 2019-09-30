@@ -135,7 +135,7 @@ function install_custom_packages(){
         echo 'export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$HOME/.mujoco/mujoco200/bin' >> \$HOME/.bashrc;
 
         # download mjkey.txt to ~/.mujoco/mjkey.txt
-        gsutil cp gs://$STORAGE_BUCKET_NAME/mjkey.txt \$HOME/.mujoco/mjkey.txt
+        /snap/bin/gsutil cp gs://$STORAGE_BUCKET_NAME/mjkey.txt \$HOME/.mujoco/mjkey.txt
 
         # conda environment
         git clone https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/$GITHUB_REPOSITORY.git repo;
