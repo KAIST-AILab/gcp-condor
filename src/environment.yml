@@ -1,10 +1,10 @@
 name: example-env
 dependencies:
 - python=3
-- tqdm
 - cython  # for mujoco_py ?
 - pip:
   - numpy==1.16.4
+  - tqdm
   - gym
   - tensorflow==1.14
   - tensorflow-probability==0.7
