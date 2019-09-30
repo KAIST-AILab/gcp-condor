@@ -122,6 +122,7 @@ function install_custom_packages(){
         rm Miniconda3-latest-Linux-x86_64.sh;
         eval \"\$(\$HOME/miniconda/bin/conda shell.bash hook)\";
         conda init;
+        pip install parse;
 
         # for mpi4py
         sudo apt-get install -y libmpich-dev libsm6;  # libopenmpi-dev
