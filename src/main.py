@@ -25,7 +25,9 @@ def run(env_name, algorithm, seed):
     else:
         raise NotImplementedError()
 
+    filepath = '%s_%s_%d' % (env_name, algorithm, seed)
     model.learn(total_timesteps=100000, seed=seed)
+    model.save(filepath)
 
 
 if __name__ == "__main__":
@@ -35,7 +37,7 @@ if __name__ == "__main__":
 
     run_setups = []
     for seed in range(3):
-        for env_name in ['HalfCheetah-v2', 'Hopper-v2', 'Ant-v2', 'Walker-v2']:
+        for env_name in ['halfcheetah', 'hopper', 'ant', 'walker']:
             for algorithm in ['ppo', 'trpo', 'sac']:
                 run_setups.append((env_name, algorithm, seed))
 
