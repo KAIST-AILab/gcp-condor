@@ -32,7 +32,7 @@ def make_vectorized_env(env_name, n_envs=multiprocessing.cpu_count()):
     return vec_env
 
 
-def evaluate_policy(vec_env, agent, num_episodes=30, deterministic=False, render=False):
+def evaluate_policy(vec_env, agent, num_episodes=30, deterministic=False):
     episode_rewards = []
 
     with tqdm(total=num_episodes, desc="policy_evaluation") as pbar:
@@ -50,10 +50,6 @@ def evaluate_policy(vec_env, agent, num_episodes=30, deterministic=False, render
 
             obs = next_obs
 
-            if render:
-                vec_env.render()
-                time.sleep(0.1)
-
         episode_rewards = np.array(episode_rewards)
 
     mu = np.mean(episode_rewards)
@@ -69,7 +65,7 @@ if __name__ == "__main__":
             vec_env = make_vectorized_env(env_name)
 
             for algorithm in ['ppo', 'trpo', 'sac']:
-                model_filepath = '%s_%s_%d' % (env_name, algorithm, seed)
+                model_filepath = '%s_%s_%d.pkl' % (env_name, algorithm, seed)
                 if algorithm == 'ppo':
                     model = PPO2.load(model_filepath)
                 elif algorithm == 'trpo':
