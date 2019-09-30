@@ -1,5 +1,4 @@
 import multiprocessing
-import time
 
 import gym
 import numpy as np
@@ -66,11 +65,11 @@ if __name__ == "__main__":
             for algorithm in ['ppo', 'trpo', 'sac']:
                 model_filepath = '%s_%s_%d.pkl' % (env_name, algorithm, seed)
                 if algorithm == 'ppo':
-                    model = PPO2.load(model_filepath)
+                    model = PPO2.load(model_filepath, vec_env)
                 elif algorithm == 'trpo':
-                    model = TRPO.load(model_filepath)
+                    model = TRPO.load(model_filepath, vec_env)
                 elif algorithm == 'sac':
-                    model = SAC.load(model_filepath)
+                    model = SAC.load(model_filepath, vec_env)
                 else:
                     raise NotImplementedError()
 
