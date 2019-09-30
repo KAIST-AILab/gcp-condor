@@ -1,0 +1,6 @@
+ZONE: us-central1-b
+STORAGE_BUCKET_NAME: my-bucket-353679
+GITHUB_USERNAME: username
+GITHUB_PASSWORD: password
+GITHUB_REPOSITORY: KAIST-AILab/gcp-condor
+GITHUB_REPOSITORY_CONDA_ENVFILE_PATH: src/environment.yml

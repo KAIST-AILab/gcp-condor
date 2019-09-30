@@ -1,0 +1,14 @@
+name: example-env
+dependencies:
+- python=3
+- numpy
+- tqdm
+- cython  # for mujoco_py ?
+- pip:
+  - gym
+  - tensorflow==1.14
+  - tensorflow-probability==0.7
+  - mujoco_py
+  - stable_baselines
+  - mpi4py
+  - gast==0.2.2  # to prevent tensorflow warning (WARNING:tensorflow:Entity could not be transformed and will be executed as-is.)
