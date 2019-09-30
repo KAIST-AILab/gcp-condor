@@ -54,9 +54,8 @@ def evaluate_policy(vec_env, agent, num_episodes=30, deterministic=False):
 
     mu = np.mean(episode_rewards)
     ste = np.std(episode_rewards) / np.sqrt(len(episode_rewards))
-    print("\n%f +- %f" % (mu, ste))
 
-    return np.mean(episode_rewards)
+    return mu, ste
 
 
 if __name__ == "__main__":
@@ -75,5 +74,5 @@ if __name__ == "__main__":
                 else:
                     raise NotImplementedError()
 
-                result = evaluate_policy(vec_env, model)
-                print(result)
+                result_mean, result_ste = evaluate_policy(vec_env, model)
+                print("%f +- %f" % (result_mean, 2 * result_ste))
