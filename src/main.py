@@ -12,7 +12,7 @@ def run(env_name, algorithm, seed):
         'halfcheetah': 'HalfCheetah-v2',
         'hopper': 'Hopper-v2',
         'ant': 'Ant-v2',
-        'walker': 'Walker-v2'
+        'walker': 'Walker2d-v2'
     }
     env = DummyVecEnv([lambda: gym.make(env_name_map[env_name])])
 

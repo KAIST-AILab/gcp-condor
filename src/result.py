@@ -1,5 +1,6 @@
 import multiprocessing
 
+import os
 import gym
 import numpy as np
 from stable_baselines import PPO2
@@ -15,7 +16,7 @@ def make_vectorized_env(env_name, n_envs=multiprocessing.cpu_count()):
         'halfcheetah': 'HalfCheetah-v2',
         'hopper': 'Hopper-v2',
         'ant': 'Ant-v2',
-        'walker': 'Walker-v2'
+        'walker': 'Walker2d-v2'
     }
 
     def make_env(env_id, seed=0):
@@ -64,6 +65,10 @@ if __name__ == "__main__":
 
             for algorithm in ['ppo', 'trpo', 'sac']:
                 model_filepath = '%s_%s_%d.pkl' % (env_name, algorithm, seed)
+                if not os.path.exists(model_filepath):
+                    print("'%s' does not exists." % model_filepath)
+                    continue
+
                 if algorithm == 'ppo':
                     model = PPO2.load(model_filepath, vec_env)
                 elif algorithm == 'trpo':
@@ -74,4 +79,4 @@ if __name__ == "__main__":
                     raise NotImplementedError()
 
                 result_mean, result_ste = evaluate_policy(vec_env, model)
-                print("%f +- %f" % (result_mean, 2 * result_ste))
+                print("env=%s,algorithm=%s,seed=%d: %f +- %f" % (env_name, algorithm, seed, result_mean, 2 * result_ste))
