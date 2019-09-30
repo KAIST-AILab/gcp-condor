@@ -4,7 +4,7 @@ dependencies:
 - tqdm
 - cython  # for mujoco_py ?
 - pip:
-  - numpy==1.16
+  - numpy==1.16.4
   - gym
   - tensorflow==1.14
   - tensorflow-probability==0.7
