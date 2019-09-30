@@ -26,7 +26,7 @@ def run(env_name, algorithm, seed):
         raise NotImplementedError()
 
     filepath = '%s_%s_%d.pkl' % (env_name, algorithm, seed)
-    model.learn(total_timesteps=200000, seed=seed)
+    model.learn(total_timesteps=100000, seed=seed)
     model.save(filepath)
 
 
