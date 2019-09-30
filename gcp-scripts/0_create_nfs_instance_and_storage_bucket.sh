@@ -16,7 +16,7 @@ gcloud compute  instances create nfs-instance \
 # Create storage bucket (e.g. to store mjkey.txt)
 echo "==========================================="
 gsutil mb gs://$STORAGE_BUCKET_NAME
-echo "Please update 'mjkey.txt' to the created bucket ($STORAGE_BUCKET_NAME)!"
+echo "Please upload 'mjkey.txt' to the created bucket ($STORAGE_BUCKET_NAME)!"
 echo "Link: https://console.cloud.google.com/storage/browser/$STORAGE_BUCKET_NAME?project=$DEVSHELL_PROJECT_ID"
 echo "==========================================="
 
